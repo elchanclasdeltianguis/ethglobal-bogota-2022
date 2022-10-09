@@ -10,7 +10,7 @@ const collectionAddresses = [
 
 export default function ProductsGallery({}: Props) {
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-2 gap-4">
       {collectionAddresses.map((item) => (
         <ProductCollection collectionAddress={item} />
       ))}

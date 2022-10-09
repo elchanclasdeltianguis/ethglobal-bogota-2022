@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { NftProvider, useNft } from "use-nft";
 import { useTotalSupply } from "../../hooks/useTotalSupply";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import truncateEthAddress from "truncate-eth-address";
 
 type Props = { collectionAddress: string };
 
@@ -29,32 +30,46 @@ const ProductCollection = ({ collectionAddress }: Props) => {
       ) : (
         <div className="flex flex-col items-start justify-center">
           <div className="flex items-center justify-center">
-            {!loadingTotalSupply && (
-              <ChevronLeftIcon
-                className="w-12 cursor-pointer"
-                onClick={handleClickLeft}
-              />
-            )}
+            <ChevronLeftIcon
+              className={`"w-12 cursor-pointer ${
+                loadingTotalSupply && "hidden"
+              }`}
+              onClick={handleClickLeft}
+            />
             <img
               className=" shadow-[#333] shadow-[0px_4px_0px_0px] rounded-[40px] max-h-48"
               src={nft?.image}
               height={192}
               alt={nft?.description}
             />
-            {!loadingTotalSupply && (
-              <ChevronRightIcon
-                className="w-12 cursor-pointer"
-                onClick={handleClickRight}
-              />
-            )}
+            <ChevronRightIcon
+              className={`"w-12 cursor-pointer ${
+                loadingTotalSupply && "hidden"
+              }`}
+              onClick={handleClickRight}
+            />
           </div>
-          <h1 className="">Title: {nft?.name}</h1>
-          <p>Description: {nft?.description}</p>
-          <p>Owner: {nft?.owner}</p>
+          <div className="space-y-4">
+            <h1 className="my-4 font-mono">
+              Title: <span className="font-bold italic">{nft?.name}</span>
+            </h1>
+            <div className="font-mono flex flex-col">
+              <h2>Description:</h2>
+              <span className="font-bold italic">{nft?.description}</span>
+            </div>
+            <div className="flex flex-col">
+              <h2 className="font-mono">Owner:</h2>{" "}
+              <span className="font-bold italic">
+                {truncateEthAddress(nft?.owner ? nft?.owner : "")}
+              </span>
+            </div>
+          </div>
         </div>
       )}
-      <p>Total supply: {loadingTotalSupply ? "loading" : totalSupply}</p>
       <p>id: {id}</p>
+      <p className={`${loadingTotalSupply && "hidden"}`}>
+        Total supply: {loadingTotalSupply ? "loading" : totalSupply}
+      </p>
     </div>
   );
 };
