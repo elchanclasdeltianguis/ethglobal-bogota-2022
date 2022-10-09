@@ -26,7 +26,6 @@ const playbackId =
 const vid = "1901ety4nvzgd6e4";
 
 const playerTheme = {
-  background: { color: "#000000" },
   borderStyles: {
     containerBorderStyle: "hidden",
   },
@@ -78,8 +77,9 @@ const Home: NextPage = () => {
           please join us live December 2nd and 3rd 2022!
         </p>
         <div
-          className={`w-[666px] flex-1 flex-grow items-center gap-2 rounded-[40px] border-4 border-solid border-black bg-black z-0
-          text-center outline-none  shadow-[#333333] shadow-[0px_4px_0px_0px] text-[rgba(130,130,130,1)]`}
+          className={`w-[666px] flex-1 flex-grow items-center gap-2 rounded-[40px] 
+         bg-black z-0 text-center outline-none  shadow-[#000] border-b-4 border-[#000] 
+          shadow-[0px_4px_0px_0px] text-[rgba(130,130,130,1)]`}
         >
           <Player
             title="Crypto Bazaar Live Stream"

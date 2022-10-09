@@ -6,7 +6,7 @@ type Props = {};
 export default function Footer({}: Props) {
   return (
     <footer
-      className="flex text-center items-center justify-center py-4 border-t \
+      className="flex text-center items-center justify-center py-4
       rounded-t-full gap-8 bg-[#eee] h-16 "
     >
       Powered by
