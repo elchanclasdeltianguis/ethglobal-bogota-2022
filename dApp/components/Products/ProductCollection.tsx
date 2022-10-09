@@ -37,7 +37,7 @@ const ProductCollection = ({ collectionAddress }: Props) => {
               />
             )}
             <img
-              className=" shadow-[#333] shadow-[0px_4px_0px_0px] rounded-[40px] max-h-48"
+              className=" shadow-[#333] shadow-[0px_4px_0px_0px] rounded-[40px] max-h-48 border-2 border-[#333]"
               src={nft?.image}
               height={192}
               alt={nft?.description}
