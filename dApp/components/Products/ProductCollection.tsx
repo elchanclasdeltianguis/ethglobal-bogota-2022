@@ -30,24 +30,24 @@ const ProductCollection = ({ collectionAddress }: Props) => {
       ) : (
         <div className="flex flex-col items-start justify-center">
           <div className="flex items-center justify-center">
-            <ChevronLeftIcon
-              className={`"w-12 cursor-pointer ${
-                loadingTotalSupply && "hidden"
-              }`}
-              onClick={handleClickLeft}
-            />
+            {!loadingTotalSupply && (
+              <ChevronLeftIcon
+                className="w-12 cursor-pointer"
+                onClick={handleClickLeft}
+              />
+            )}
             <img
               className=" shadow-[#333] shadow-[0px_4px_0px_0px] rounded-[40px] max-h-48"
               src={nft?.image}
               height={192}
               alt={nft?.description}
             />
-            <ChevronRightIcon
-              className={`"w-12 cursor-pointer ${
-                loadingTotalSupply && "hidden"
-              }`}
-              onClick={handleClickRight}
-            />
+            {!loadingTotalSupply && (
+              <ChevronRightIcon
+                className="w-12 cursor-pointer"
+                onClick={handleClickRight}
+              />
+            )}
           </div>
           <div className="space-y-4">
             <h1 className="my-4 font-mono">
