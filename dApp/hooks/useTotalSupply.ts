@@ -15,9 +15,14 @@ export const useTotalSupply = (address: string): ReturnProps => {
     const getTotalSupply = async () => {
       setLoading(true);
       const response = await fetchTotalSupply(address);
-      response &&
-        setTotalSupply(parseInt(ethers.utils.formatUnits(response, 0)));
-      setLoading(false);
+      try {
+        response &&
+          setTotalSupply(parseInt(ethers.utils.formatUnits(response, 0)));
+
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
     };
     !loading && getTotalSupply();
   }, [address]);
